@@ -30,7 +30,7 @@ public class UnorderedPair<T extends Comparable> extends Pair<T> {
         return super.getFirst();
     }
 
-    public T getSecondItem(){
+    public T getSecondItem() {
         return super.getSecond();
     }
 

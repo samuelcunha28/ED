@@ -9,8 +9,8 @@ public class TwoTypePair <T1, T2> {
     }
 
     public TwoTypePair(T1 firstItem, T2 secondItem) {
-        this.first = firstItem;
-        this.second = secondItem;
+        first = firstItem;
+        second = secondItem;
     }
 
     public T1 getFirst() {

@@ -1,0 +1,5 @@
+Preencha os espaços em branco:
+a) A declaração Store<T> é ( uma classe generica/classe parametrizada ).
+b) Store é uma ( classe ), e T é o ( tipo parametrizado ).
+c) Store<String> é ( a instancia da classe com o tipo parametrizado ).
+d) O uso de um tipo parametrizado é conhecido como ( tipo generico ).

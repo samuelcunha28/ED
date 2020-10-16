@@ -1,7 +1,8 @@
-import Exceptions.LinkedListExceptions;
+import Exceptions.ElementNotFoundException;
+import Exceptions.EmptyListException;
 public class Main {
 
-    public static void main(String[] args) throws LinkedListExceptions {
+    public static void main(String[] args) throws EmptyListException, ElementNotFoundException {
         Person p1 = new Person("Samuel");
         Person p2 = new Person("Joao");
         Person p3 = new Person("Ana");
@@ -19,8 +20,8 @@ public class Main {
         lista.printList();
 
         // Remover primeiro (correto)
-        //lista.remove(p1);
-        //lista.printList();
+        // lista.remove(p1);
+        // lista.printList();
 
         // Remover do meio da lista (correto)
         // lista.remove(p2);

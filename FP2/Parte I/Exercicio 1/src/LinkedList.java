@@ -1,4 +1,5 @@
-import Exceptions.LinkedListExceptions;
+import Exceptions.ElementNotFoundException;
+import Exceptions.EmptyListException;
 
 public class LinkedList<T> {
 
@@ -22,14 +23,6 @@ public class LinkedList<T> {
     }
 
     /**
-     * Setter for count
-     * @param count the count
-     */
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    /**
      * Getter for node head
      * @return the node head
      */
@@ -38,27 +31,11 @@ public class LinkedList<T> {
     }
 
     /**
-     * Setter for node head
-     * @param head the node head
-     */
-    public void setHead(LinkedNode<T> head) {
-        this.head = head;
-    }
-
-    /**
      * Getter for node tail
      * @return the node tail
      */
     public LinkedNode<T> getTail() {
         return tail;
-    }
-
-    /**
-     * Setter for node tail
-     * @param tail node tail
-     */
-    public void setTail(LinkedNode<T> tail) {
-        this.tail = tail;
     }
 
     /**
@@ -91,10 +68,10 @@ public class LinkedList<T> {
         return (this.count == 0);
     }
 
-    public void remove(T element) throws LinkedListExceptions {
+    public void remove(T element) throws EmptyListException, ElementNotFoundException {
         // Caso a lista esteja vazia
         if (count == 0) {
-            throw new LinkedListExceptions("A lista esta vazia");
+            throw new EmptyListException("A lista esta vazia");
         } else {
             LinkedNode current = this.head;
             LinkedNode previous = null;
@@ -118,6 +95,7 @@ public class LinkedList<T> {
                     // Caso o primeiro node seja o unico elemento da lista
                     if (current.equals(tail)) {
                         this.tail = null;
+                        this.head = null;
                     }
                     // Remove um node do meio da lista com ou sem elemento
                 } else if (current != this.tail && current.getElement().equals(element) || current.getElement().equals(null)) {
@@ -130,24 +108,19 @@ public class LinkedList<T> {
                 count--; // Depois de removido decrementa-se o contador
                 // return found;
             } else {
-                throw new LinkedListExceptions("O node nao foi encontrado");
+                throw new ElementNotFoundException("O node nao foi encontrado");
             }
         }
     }
     /**
      * Imprimir todos os elementos da list
      */
-    public void printList() throws LinkedListExceptions {
+    public void printList() throws EmptyListException {
         LinkedNode node = this.head;
         //só imprime se houver elementos na lista
-        if (node != null) {
-            do {
-                // Print da informação
-                System.out.print(node.toString() + "\n");
-                node = node.getNext();
-            } while (node != null);
-        } else {
-            throw new LinkedListExceptions("Impossivel imprimir. A lista esta vazia");
+        while (node != null) {
+            System.out.print(node.toString() + "\n");
+            node = node.getNext();
         }
     }
 }

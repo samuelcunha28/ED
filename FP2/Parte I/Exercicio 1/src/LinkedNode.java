@@ -23,7 +23,7 @@ public class LinkedNode<T> {
      * @return next node
      */
     public LinkedNode<T> getNext() {
-        return next;
+        return this.next;
     }
 
     /**
@@ -39,7 +39,7 @@ public class LinkedNode<T> {
      * @return the element
      */
     public T getElement() {
-        return element;
+        return this.element;
     }
 
     /**
@@ -56,6 +56,6 @@ public class LinkedNode<T> {
      */
     @Override
     public String toString() {
-        return element.toString();
+        return this.element.toString();
     }
 }

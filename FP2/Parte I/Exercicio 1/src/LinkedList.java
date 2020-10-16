@@ -16,6 +16,7 @@ public class LinkedList<T> {
 
     /**
      * Getter for count
+     *
      * @return the count
      */
     public int getCount() {
@@ -24,6 +25,7 @@ public class LinkedList<T> {
 
     /**
      * Getter for node head
+     *
      * @return the node head
      */
     public LinkedNode<T> getHead() {
@@ -32,6 +34,7 @@ public class LinkedList<T> {
 
     /**
      * Getter for node tail
+     *
      * @return the node tail
      */
     public LinkedNode<T> getTail() {
@@ -40,6 +43,7 @@ public class LinkedList<T> {
 
     /**
      * Metodo para adicionar um elemento ao node
+     *
      * @param element
      */
     public void add(T element) {
@@ -77,41 +81,37 @@ public class LinkedList<T> {
             LinkedNode previous = null;
             boolean found = false;
 
-            while(current != null && found == false) {
-                if(current.getElement() == element) {
+            while (current != null && found == false) {
+                if (current.getElement() == element) {
                     found = true;
                 } else {
                     previous = current;
                     current = current.getNext();
                 }
             }
-            // Remove-se caso o nodo seja encontrado
-            if (found == true) {
-                // Remove o primeiro node com ou sem elemento
-                if(this.head.getElement().equals(element)|| this.head.getElement().equals(null)) {
-                    this.head.setNext(current.getNext());
-                    this.head = current.getNext();
-
-                    // Caso o primeiro node seja o unico elemento da lista
-                    if (current.equals(tail)) {
-                        this.tail = null;
-                        this.head = null;
-                    }
-                    // Remove um node do meio da lista com ou sem elemento
-                } else if (current != this.tail && current.getElement().equals(element) || current.getElement().equals(null)) {
-                    previous.setNext(current.getNext());
-                    // Remove o ultimo node com ou sem elemento
-                } else if (this.tail.getElement().equals(element) || this.tail.getElement().equals(null)) {
-                    previous.setNext(tail.getNext());
-                    this.tail = previous;
-                }
-                count--; // Depois de removido decrementa-se o contador
-                // return found;
-            } else {
+            if (!found) {
                 throw new ElementNotFoundException("O node nao foi encontrado");
             }
+            if (current.equals(head)) {
+                // Remove o ultimo node da lista
+                this.head.setNext(current.getNext());
+                this.head = current.getNext();
+            } else if (current.equals(tail)) {
+                // Remove o primeiro
+                previous.setNext(tail.getNext());
+                this.tail = previous;
+            } else if (current.equals(tail)) {
+                // Caso o primeiro node seja o unico elemento da lista
+                this.head = null;
+                this.tail = null;
+            } else {
+                // Remove um node do meio da lista
+                previous.setNext(current.getNext());
+            }
+            count--; // Depois de removido decrementa-se o contador
         }
     }
+
     /**
      * Imprimir todos os elementos da list
      */

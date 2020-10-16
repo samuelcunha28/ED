@@ -19,18 +19,18 @@ public class Main {
         System.out.println("Lista inicial: ");
         lista.printList();
 
-        // Remover primeiro (correto)
-        // lista.remove(p1);
-        // lista.printList();
+        // Remover primeiro (incorreto)
+        //lista.remove(p1);
+        //lista.printList();
 
         // Remover do meio da lista (correto)
-        // lista.remove(p2);
-        // lista.remove(p3);
-        // lista.printList();
+        //lista.remove(p2);
+        //lista.remove(p3);
+        //lista.printList();
 
-        // Removre o ultimo da lista (correto)
-        // lista.remove(p4);
-        // lista.printList();
+        // Remove o ultimo da lista (correto)
+        //lista.remove(p4);
+        //lista.printList();
 
     }
 }

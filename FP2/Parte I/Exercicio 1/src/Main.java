@@ -19,7 +19,7 @@ public class Main {
         System.out.println("Lista inicial: ");
         lista.printList();
 
-        // Remover primeiro (incorreto)
+        // Remover primeiro (correto)
         //lista.remove(p1);
         //lista.printList();
 

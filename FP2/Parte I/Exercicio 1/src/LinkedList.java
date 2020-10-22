@@ -4,7 +4,7 @@ import Exceptions.EmptyListException;
 public class LinkedList<T> {
 
     private int count;
-    private LinkedNode<T> head, tail;
+    private LinearNode<T> head, tail;
 
     /**
      * Constructor of LinkedList
@@ -28,7 +28,7 @@ public class LinkedList<T> {
      *
      * @return the node head
      */
-    public LinkedNode<T> getHead() {
+    public LinearNode<T> getHead() {
         return head;
     }
 
@@ -37,7 +37,7 @@ public class LinkedList<T> {
      *
      * @return the node tail
      */
-    public LinkedNode<T> getTail() {
+    public LinearNode<T> getTail() {
         return tail;
     }
 
@@ -47,7 +47,7 @@ public class LinkedList<T> {
      * @param element
      */
     public void add(T element) {
-        LinkedNode<T> newElement = new LinkedNode<>(element);
+        LinearNode<T> newElement = new LinearNode<>(element);
 
         /**
          * Percorre este if quando a lista está vazia. Tem que se apontar o head e o tail ao novo elemento.
@@ -77,8 +77,8 @@ public class LinkedList<T> {
         if (count == 0) {
             throw new EmptyListException("A lista esta vazia");
         } else {
-            LinkedNode current = this.head;
-            LinkedNode previous = null;
+            LinearNode current = this.head;
+            LinearNode previous = null;
             boolean found = false;
 
             while (current != null && found == false) {
@@ -116,7 +116,7 @@ public class LinkedList<T> {
      * Imprimir todos os elementos da list
      */
     public void printList() throws EmptyListException {
-        LinkedNode node = this.head;
+        LinearNode node = this.head;
         //só imprime se houver elementos na lista
         while (node != null) {
             System.out.print(node.toString() + "\n");

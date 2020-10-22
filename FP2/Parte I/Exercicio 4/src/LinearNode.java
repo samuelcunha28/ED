@@ -1,20 +1,21 @@
-public class LinkedNode<T> {
+public class LinearNode<T> {
 
     private T element;
-    private LinkedNode<T> next;
+    private LinearNode<T> next, previous;
 
     /**
      * Constructor
      */
-    public LinkedNode() {
+    public LinearNode() {
     }
 
     /**
      * Constructor
      * @param element element node
      */
-    public LinkedNode(T element) {
+    public LinearNode(T element) {
         this.next = null;
+        this.previous = null;
         this.element = element;
     }
 
@@ -22,7 +23,7 @@ public class LinkedNode<T> {
      * Getter for the next node
      * @return next node
      */
-    public LinkedNode<T> getNext() {
+    public LinearNode<T> getNext() {
         return this.next;
     }
 
@@ -30,7 +31,7 @@ public class LinkedNode<T> {
      * Setter for the next node
      * @param next next node
      */
-    public void setNext(LinkedNode<T> next) {
+    public void setNext(LinearNode<T> next) {
         this.next = next;
     }
 
@@ -50,12 +51,18 @@ public class LinkedNode<T> {
         this.element = element;
     }
 
-    /**
-     * Method toString to print
-     * @return The element string
-     */
+    public LinearNode<T> getPrevious() {
+        return previous;
+    }
+
+    public void setPrevious(LinearNode<T> previous) {
+        this.previous = previous;
+    }
+
     @Override
     public String toString() {
-        return this.element.toString();
+        return "LinkedNode{" +
+                "element=" + element +
+                '}';
     }
 }

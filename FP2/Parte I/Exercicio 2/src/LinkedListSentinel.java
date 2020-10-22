@@ -3,14 +3,14 @@ import Exceptions.EmptyListException;
 public class LinkedListSentinel<T> {
 
     private int count;
-    private LinkedNode<T> head, tail;
+    private LinearNode<T> head, tail;
 
     /**
      * Constructor for an empty list
      */
     public LinkedListSentinel() {
-        this.head = new LinkedNode<>(null);
-        this.tail = new LinkedNode<>(null);
+        this.head = new LinearNode<>(null);
+        this.tail = new LinearNode<>(null);
     }
 
     /**
@@ -27,7 +27,7 @@ public class LinkedListSentinel<T> {
      *
      * @return the node head
      */
-    public LinkedNode<T> getHead() {
+    public LinearNode<T> getHead() {
         return head;
     }
 
@@ -36,7 +36,7 @@ public class LinkedListSentinel<T> {
      *
      * @return the node tail
      */
-    public LinkedNode<T> getTail() {
+    public LinearNode<T> getTail() {
         return tail;
     }
 
@@ -50,7 +50,7 @@ public class LinkedListSentinel<T> {
      */
     public void add(T element) {
         // new node
-        LinkedNode<T> newNode = new LinkedNode<>(element);
+        LinearNode<T> newNode = new LinearNode<>(element);
 
         newNode.setNext(this.head.getNext());
         this.head.setNext(newNode);
@@ -65,8 +65,8 @@ public class LinkedListSentinel<T> {
     public boolean remove(T element) {
         boolean found = false;
 
-        LinkedNode<T> previous = this.head;
-        LinkedNode<T> current = this.head.getNext();
+        LinearNode<T> previous = this.head;
+        LinearNode<T> current = this.head.getNext();
 
         while (current.getElement() != null ) {
             if (current.getElement().equals(element)) {
@@ -86,7 +86,7 @@ public class LinkedListSentinel<T> {
      * Imprimir todos os elementos da list
      */
     public void printList() throws EmptyListException {
-        LinkedNode node = this.head;
+        LinearNode node = this.head;
         //só imprime se houver elementos na lista
         while (node != null) {
             System.out.print(node.toString() + "\n");

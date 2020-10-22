@@ -1,19 +1,19 @@
-public class LinkedNode<T> {
+public class LinearNode<T> {
 
     private T element;
-    private LinkedNode<T> next;
+    private LinearNode<T> next;
 
     /**
      * Constructor
      */
-    public LinkedNode() {
+    public LinearNode() {
     }
 
     /**
      * Constructor
      * @param element element node
      */
-    public LinkedNode(T element) {
+    public LinearNode(T element) {
         this.next = null;
         this.element = element;
     }
@@ -22,7 +22,7 @@ public class LinkedNode<T> {
      * Getter for the next node
      * @return next node
      */
-    public LinkedNode<T> getNext() {
+    public LinearNode<T> getNext() {
         return this.next;
     }
 
@@ -30,7 +30,7 @@ public class LinkedNode<T> {
      * Setter for the next node
      * @param next next node
      */
-    public void setNext(LinkedNode<T> next) {
+    public void setNext(LinearNode<T> next) {
         this.next = next;
     }
 

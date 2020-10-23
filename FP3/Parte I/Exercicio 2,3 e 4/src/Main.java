@@ -3,7 +3,7 @@ import Exceptions.EmptyCollectionException;
 public class Main {
 
     public static void main(String[] args) throws EmptyCollectionException {
-        ArrayStack<Integer> stack = new ArrayStack<>(2);
+        LinkedStack<Integer> stack = new LinkedStack<>();
 
         stack.push(1);
         // System.out.println(stack.toString());
@@ -14,8 +14,9 @@ public class Main {
         stack.push(3);
         // System.out.println(stack.toString());
 
-        stack.pop();
-        System.out.println(stack.peek());
-        System.out.println(stack.toString());
+        // stack.pop();
+        // System.out.println(stack.toString());
+        // System.out.println(stack.peek());
+        // System.out.println(stack.toString());
     }
 }

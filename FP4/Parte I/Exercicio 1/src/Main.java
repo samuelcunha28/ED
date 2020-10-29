@@ -3,9 +3,9 @@ import Exceptions.EmptyCollectionException;
 public class Main {
 
     public static void main(String[] args) throws EmptyCollectionException {
-	    LinkedQueue<String> list = new LinkedQueue<>();
+        LinkedQueue<String> list = new LinkedQueue<>();
 
-	    list.enqueue("A");
+        list.enqueue("A");
         list.enqueue("B");
         list.enqueue("C");
         list.enqueue("D");

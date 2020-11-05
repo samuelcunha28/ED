@@ -197,13 +197,14 @@ public class ArrayList<T> implements ListADT<T> {
      */
     @Override
     public String toString() {
-        String s = "";
+        String text = "";
+        Iterator it = iterator();
 
-        for (int i = 0; i < this.rear; i++) {
-            s += this.array[i].toString() + " ";
+        while (it.hasNext()) {
+            text += "\n" + it.next().toString();
         }
 
-        return s;
+        return text;
     }
 
     /**

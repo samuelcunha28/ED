@@ -1,5 +1,8 @@
 package Interfaces;
 
+import Exceptions.ElementNotFoundException;
+import Exceptions.EmptyListException;
+
 /**
  * BinarySearchTreeADT defines the interface to a binary search tree
  */
@@ -18,7 +21,7 @@ public interface BinarySearchTreeADT<T> extends BinaryTreeADT<T> {
      * @param targetElement the element to be removed from this tree
      * @return the element removed from this tree
      */
-    public T removeElement (T targetElement);
+    public T removeElement (T targetElement) throws ElementNotFoundException, EmptyListException;
 
     /**
      * Removes all occurrences of the specified element from this tree

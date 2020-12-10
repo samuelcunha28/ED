@@ -1,7 +1,9 @@
+import Exceptions.ElementNotFoundException;
+import Exceptions.EmptyListException;
 import Interfaces.BinarySearchTreeADT;
 
 public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T>
-                                    implements BinarySearchTreeADT<T> {
+        implements BinarySearchTreeADT<T> {
 
     /**
      * Creates an empty binary search tree
@@ -14,9 +16,9 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T>
      * Creates a binary search with the specified element as its root
      *
      * @param element the element that will be the root of the new binary
-     * search tree
+     *                search tree
      */
-    public LinkedBinarySearchTree (T element) {
+    public LinkedBinarySearchTree(T element) {
         super(element);
     }
 
@@ -59,9 +61,108 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T>
 
     }
 
+    /**
+     * Removes the first element that matches the specified target
+     * element from the binary search tree and returns a reference to it
+     * Throws a ElementNotFoundException if the specified target
+     * element is not found in the binary search tree
+     *
+     * @param targetElement the element being sought in the binary search tree
+     * @throws ElementNotFoundException if an element nof found exception occurs
+     */
     @Override
-    public T removeElement(T targetElement) {
-        return null;
+    public T removeElement(T targetElement) throws ElementNotFoundException, EmptyListException {
+        T result = null;
+        if (!isEmpty()) {
+
+            if (((Comparable) targetElement).equals(root.element)) {
+                result = root.element;
+                root = replacement(root);
+                count--;
+            } else {
+                BinaryTreeNode<T> current, parent = root;
+                boolean found = false;
+
+                if (((Comparable) targetElement).compareTo(root.element) < 0) {
+                    current = root.left;
+                } else {
+                    current = root.right;
+                }
+
+                while (current != null && !found) {
+
+                    if (targetElement.equals(current.element)) {
+
+                        found = true;
+                        count--;
+                        result = current.element;
+
+                        if (current == parent.left) {
+                            parent.left = replacement(current);
+                        } else {
+                            parent.right = replacement(current);
+                        }
+                    } else {
+                        parent = current;
+
+                        if (((Comparable) targetElement).compareTo(current.element) < 0) {
+                            current = current.left;
+                        } else {
+                            current = current.right;
+                        }
+                    }
+                } //while
+
+                if (!found) {
+                    throw new ElementNotFoundException("Not found in binary search tree");
+                }
+            }
+        } else {// end outer if
+            throw new EmptyListException("list is empty");
+        }
+        return result;
+    }
+
+    /**
+     * Returns a reference to a node that will replace the one specified
+     * for removal. In the case where the removed node has two children,
+     * the inorder successor is used as its replacement
+     *
+     * @param node the node to be removed
+     * @return a reference to the replacing node
+     */
+    protected BinaryTreeNode<T> replacement(BinaryTreeNode<T> node) {
+        BinaryTreeNode<T> result = null;
+
+        // Se o node é uma folha
+        if ((node.left == null) && (node.right == null)) {
+            result = null;
+            // Se o node só tem um filho à direita, o node é substituido pelo seu filho
+        } else if ((node.left != null) && (node.right == null)) {
+            result = node.left;
+            // Se o node só tem um filho à direita, o node é substituido pelo seu filho
+        } else if ((node.left == null) && (node.right != null)) {
+            result = node.right;
+        } else {
+            BinaryTreeNode<T> current = node.right;
+            BinaryTreeNode<T> parent = node;
+            // Chegar ao final do filho direito do lado esquerdo
+            while (current.left != null) {
+                parent = current;
+                current = current.left;
+                // se o node sem filho à esquerda for igual ao filho direito do node a remover, o filho esquerdo passa a ser filho esquerdo do filho direito
+            }
+            if (node.right == current) {
+                current.left = node.left;
+                // se o node filho da direita tiver nodes à esquerda, este node substituirá o node removido e o node pai dele passará a ser seu filho á direita
+            } else {
+                parent.left = current.right;
+                current.right = node.left;
+                current.left = node.left;
+            }
+            result = current;
+        }
+        return result;
     }
 
     @Override

@@ -6,7 +6,7 @@ import java.util.Iterator;
 public class Main {
 
     public static void main(String[] args) throws ElementNotFoundException, EmptyListException {
-	    LinkedBinarySearchTree<Integer> tree = new LinkedBinarySearchTree<>();
+	    ArrayBinarySearchTree<Integer> tree = new ArrayBinarySearchTree<>();
 	    Iterator<Integer> iterator;
 
 		tree.addElement(3);
@@ -21,6 +21,8 @@ public class Main {
 		while (iterator.hasNext()) {
 			System.out.println(iterator.next());
 		}
+		System.out.println("");
+		System.out.println(tree.find(3));
 		System.out.println("");
 		System.out.println("Min expected (2), result is: " + tree.findMin());
 		System.out.println("Max expected (9), result is: " + tree.findMax());

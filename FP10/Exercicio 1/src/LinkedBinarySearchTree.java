@@ -165,9 +165,23 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T>
         return result;
     }
 
+    /**
+     * Removes all occurrences of the specified element from this tree
+     *
+     * @param targetElement the element that the list will have all
+     *                      instances of it removed
+     */
     @Override
-    public void removeAllOccurrences(T targetElement) {
+    public void removeAllOccurrences(T targetElement) throws ElementNotFoundException, EmptyListException {
+        removeElement(targetElement);
 
+        try {
+            while (true) {
+                removeElement(targetElement);
+            }
+        } catch (Exception e) {
+            
+        }
     }
 
     @Override

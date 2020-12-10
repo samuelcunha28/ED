@@ -29,7 +29,7 @@ public interface BinarySearchTreeADT<T> extends BinaryTreeADT<T> {
      * @param targetElement the element that the list will have all
      *                      instances of it removed
      */
-    public void removeAllOccurrences (T targetElement);
+    public void removeAllOccurrences (T targetElement) throws ElementNotFoundException, EmptyListException;
 
     /**
      * Removes and returns the smallest element from this tree

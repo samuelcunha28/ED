@@ -180,27 +180,67 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T>
                 removeElement(targetElement);
             }
         } catch (Exception e) {
-            
+
         }
     }
 
+    /**
+     * Removes and returns the smallest element from this tree
+     *
+     * @return the smallest element from this tree
+     */
     @Override
-    public T removeMin() {
-        return null;
+    public T removeMin() throws EmptyListException, ElementNotFoundException {
+        return removeElement(findMin());
     }
 
+    /**
+     * Removes and returns the largest element from this tree
+     *
+     * @return the largest element from this tree
+     */
     @Override
-    public T removeMax() {
-        return null;
+    public T removeMax() throws EmptyListException, ElementNotFoundException {
+        return removeElement(findMax());
     }
 
+    /**
+     * Returns a reference to the smallest element in this tree
+     *
+     * @return a reference to the smallest element in this tree
+     */
     @Override
-    public T findMin() {
-        return null;
+    public T findMin() throws EmptyListException {
+        if (isEmpty()) {
+            throw new EmptyListException("Empty list");
+        }
+
+        BinaryTreeNode<T> current = root;
+
+        while (current.left != null) {
+            current = current.left;
+        }
+        
+        return current.element;
     }
 
+    /**
+     * Returns a reference to the largest element in this tree
+     *
+     * @return a reference to the largest element in this tree
+     */
     @Override
-    public T findMax() {
-        return null;
+    public T findMax() throws EmptyListException {
+        if (isEmpty()) {
+            throw new EmptyListException("Empty list");
+        }
+
+        BinaryTreeNode<T> current = root;
+
+        while (current.right != null) {
+            current = current.right;
+        }
+
+        return current.element;
     }
 }
